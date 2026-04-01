@@ -2,130 +2,150 @@
 <html>
 <head>
     <title>Form Biodata</title>
+
+    <!-- Font aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #ffb6d9, #ffd6ec);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+
+        body{
+            margin:0;
+            font-family:'Quicksand', sans-serif;
+            background:linear-gradient(135deg,#ffd9ef,#ffeaf6,#fff6fb);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
         }
 
-        .container {
-            background: #ffffff;
-            padding: 35px;
-            width: 370px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
-            border: 3px solid #ffe3f3;
+        .container{
+            width:380px;
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            border:3px solid #ffe1f1;
+            box-shadow:0 15px 35px rgba(255,182,214,0.4);
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ff4da6;
+        h2{
+            text-align:center;
+            font-family:'Pacifico', cursive;
+            color:#ff5fa2;
+            margin-bottom:20px;
         }
 
-        label {
-            font-weight: bold;
-            color: #cc2e8f;
-            font-size: 14px;
+        label{
+            font-weight:600;
+            color:#d63384;
+            font-size:14px;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            border: 2px solid #ffd6ec;
-            background-color: #fff5fb;
-            transition: 0.3s;
+        input, textarea{
+            width:100%;
+            padding:10px;
+            margin-top:6px;
+            margin-bottom:15px;
+            border-radius:12px;
+            border:2px solid #ffd6ec;
+            background:#fff7fb;
+            font-family:'Quicksand', sans-serif;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #ff80bf;
-            box-shadow: 0 0 8px rgba(255, 128, 191, 0.4);
+        input:focus, textarea:focus{
+            outline:none;
+            border-color:#ff9ecf;
+            box-shadow:0 0 8px rgba(255,158,207,0.5);
         }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #ff66b2, #ff99cc);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 15px;
-            transition: 0.3s;
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:20px;
+            background:linear-gradient(to right,#ff7eb9,#ffb3d9);
+            color:white;
+            font-weight:bold;
+            font-size:15px;
+            cursor:pointer;
+            transition:0.3s;
         }
 
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        button:hover{
+            transform:scale(1.05);
+            box-shadow:0 8px 18px rgba(255,105,180,0.4);
         }
 
-        .hasil {
-            margin-top: 20px;
-            padding: 18px;
-            background: #fff0f8;
-            border-radius: 15px;
-            border: 2px dashed #ffb3d9;
+        .hasil{
+            margin-top:20px;
+            padding:15px;
+            background:#fff0f7;
+            border-radius:18px;
+            border:2px dashed #ffb6d9;
         }
 
-        .hasil h3 {
-            color: #ff3399;
-            text-align: center;
+        .hasil h3{
+            text-align:center;
+            color:#ff4da6;
         }
 
-        .hasil p {
-            color: #cc2e8f;
+        .hasil p{
+            color:#c72c87;
         }
+
     </style>
 </head>
+
 <body>
 
 <div class="container">
-    <h2>🎀 Form Biodata 🎀</h2>
 
-    <form method="POST">
-        <label>Nama Lengkap</label>
-        <input type="text" name="nama" required>
+<h2>🎀 Form Biodata 🎀</h2>
 
-        <label>Kelas</label>
-        <input type="text" name="kelas" required>
+<form method="POST">
 
-        <label>Alamat</label>
-        <textarea name="alamat" required></textarea>
+<label>Nama Lengkap</label>
+<input type="text" name="nama" required>
 
-        <label>Tanggal Lahir</label>
-        <input type="date" name="tgl_lahir" required>
+<label>Kelas</label>
+<input type="text" name="kelas" required>
 
-        <button type="submit" name="simpan">💗 Simpan 💗</button>
-    </form>
+<label>Alamat</label>
+<textarea name="alamat" required></textarea>
+
+<label>Tanggal Lahir</label>
+<input type="date" name="tgl_lahir" required>
+
+<button type="submit" name="simpan">💗 Simpan 💗</button>
+
+</form>
 
 <?php
 
-    $nama = $_POST['nama'];
-    $kelas = $_POST['kelas'];
-    $alamat = $_POST['alamat'];
-    $tgl_lahir = $_POST['tgl_lahir'];
+if(isset($_POST['simpan'])){
 
-    $tanggal_lahir = new DateTime($tgl_lahir);
-    $hari_ini = new DateTime();
-    $umur = $hari_ini->diff($tanggal_lahir)->y;
+$nama = $_POST['nama'];
+$kelas = $_POST['kelas'];
+$alamat = $_POST['alamat'];
+$tgl_lahir = $_POST['tgl_lahir'];
+
+$tanggal_lahir = new DateTime($tgl_lahir);
+$hari_ini = new DateTime();
+$umur = $hari_ini->diff($tanggal_lahir)->y;
+
 ?>
-    <div class="hasil">
-        <h3>✨ Data Biodata ✨</h3>
-        <p><b>Nama:</b> <?php echo $nama; ?></p>
-        <p><b>Kelas:</b> <?php echo $kelas; ?></p>
-        <p><b>Alamat:</b> <?php echo $alamat; ?></p>
-        <p><b>Tanggal Lahir:</b> <?php echo $tgl_lahir; ?></p>
-        <p><b>Umur:</b> <?php echo $umur; ?></p>
-    </div>
+
+<div class="hasil">
+
+<h3>✨ Data Biodata ✨</h3>
+
+<p><b>Nama:</b> <?php echo $nama; ?></p>
+<p><b>Kelas:</b> <?php echo $kelas; ?></p>
+<p><b>Alamat:</b> <?php echo $alamat; ?></p>
+<p><b>Tanggal Lahir:</b> <?php echo $tgl_lahir; ?></p>
+<p><b>Umur:</b> <?php echo $umur; ?> tahun</p>
+
+</div>
+
 <?php
 }
 ?>
