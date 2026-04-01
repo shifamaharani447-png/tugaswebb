@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Biodata</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffb6d9, #ffd6ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 35px;
+            width: 370px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+            border: 3px solid #ffe3f3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff4da6;
+        }
+
+        label {
+            font-weight: bold;
+            color: #cc2e8f;
+            font-size: 14px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border: 2px solid #ffd6ec;
+            background-color: #fff5fb;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff80bf;
+            box-shadow: 0 0 8px rgba(255, 128, 191, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #ff66b2, #ff99cc);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .hasil {
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff0f8;
+            border-radius: 15px;
+            border: 2px dashed #ffb3d9;
+        }
+
+        .hasil h3 {
+            color: #ff3399;
+            text-align: center;
+        }
+
+        .hasil p {
+            color: #cc2e8f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎀 Form Biodata 🎀</h2>
+
+    <form method="POST">
+        <label>Nama Lengkap</label>
+        <input type="text" name="nama" required>
+
+        <label>Kelas</label>
+        <input type="text" name="kelas" required>
+
+        <label>Alamat</label>
+        <textarea name="alamat" required></textarea>
+
+        <label>Tanggal Lahir</label>
+        <input type="date" name="tgl_lahir" required>
+
+        <button type="submit" name="simpan">💗 Simpan 💗</button>
+    </form>
+
+<?php
+if(isset($_POST['simpan'])){
+
+    $nama = $_POST['nama'];
+    $kelas = $_POST['kelas'];
+    $alamat = $_POST['alamat'];
+    $tgl_lahir = $_POST['tgl_lahir'];
+
+    $tanggal_lahir = new DateTime($tgl_lahir);
+    $hari_ini = new DateTime();
+    $umur = $hari_ini->diff($tanggal_lahir)->y;
+?>
+    <div class="hasil">
+        <h3>✨ Data Biodata ✨</h3>
+        <p><b>Nama:</b> <?php echo $nama; ?></p>
+        <p><b>Kelas:</b> <?php echo $kelas; ?></p>
+        <p><b>Alamat:</b> <?php echo $alamat; ?></p>
+        <p><b>Tanggal Lahir:</b> <?php echo $tgl_lahir; ?></p>
+        <p><b>Umur:</b> <?php echo $umur; ?> tahun 💕</p>
+    </div>
+<?php
+}
+?>
+
+</div>
+
+</body>
+</html>
